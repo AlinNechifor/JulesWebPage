@@ -8,10 +8,10 @@ from selenium.common.exceptions import NoSuchElementException
 
 class LoginPage(Browser):
     EMAIL_FIELD = (By.XPATH, '//input[@placeholder="Enter your email"]')
-    PASSWORD_FIELD = (By.XPATH, "//*[@type = 'password']")
-    LOGIN_BUTTON = (By.XPATH, '//*[@id="root"]/div/div[2]/form/div/div[3]/button')
-    SIGN_UP_BUTTON = (By.XPATH, '//a[@data-test-id= "sign-up-link"]')
-    FORGOT_PASSWORD = (By.XPATH, '//*[@id="root"]/div/div[2]/form/div/div[3]/a')
+    PASSWORD_FIELD = (By.XPATH, '//input[@type="password"]')
+    LOGIN_BUTTON = (By.XPATH, '//button[@type="submit"]')
+    SIGN_UP_BUTTON = (By.LINK_TEXT, 'Sign up')
+    FORGOT_PASSWORD = (By.XPATH, '//a[@data-test-id="forgot-password-link"]')
     ERROR_MESSAGE_WHEN_THE_EMAIL_IS_INCORRECT = (By.XPATH, '//*[@id="root"]/div/div[2]/form/div/div[1]/div/p')
     ERROR_MESSAGE_WHEN_THE_PASSWORD_FIELD_IS_EMPTY = (By.XPATH, '//*[@id="root"]/div/div[2]/form/div/div[2]/div/p')
 

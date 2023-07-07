@@ -4,25 +4,21 @@ from behave import *
 def step_imp(context):
     context.sign_up_page.navigate_to_sign_up_page()
 
-@When('SignUp: I click on the Business radio button')
+@When('SignUp: I click on the personal radio button')
 def step_impl(context):
-    context.sign_up_page.click_on_radio_business_button()
+    context.sign_up_page.click_on_radio_personal_button()
 
-@When('SignUp: I click on the continue button from the bussines page')
+@When('SignUp: I click on the continue button from the personal page')
 def step_impl(context):
-    context.sign_up_page.click_on_continue_button_after_i_select_the_radio_business_button()
-
-@When('SignUp: I fill in the field of name business with "{name_of_business}"')
-def step_impl(context, name_of_business):
-    context.sign_up_page.fill_in_the_field_name_of_business(name_of_business)
-
-@When('SignUp: I click on the continue button')
-def step_impl(context):
-    context.sign_up_page.click_on_universal_continue_button()
+    context.sign_up_page.click_on_continue_button_after_i_select_the_radio_personal_button()
 
 @When('SignUp: I fill in the field of first name with "{first_name}"')
 def step_impl(context, first_name):
     context.sign_up_page.fill_in_the_field_first_name(first_name)
+
+@When('SignUp: I click on the continue button')
+def step_impl(context):
+    context.sign_up_page.click_on_universal_continue_button()
 
 @When('SignUp: I fill in the field of last name with "{last_name}"')
 def step_impl(context, last_name):

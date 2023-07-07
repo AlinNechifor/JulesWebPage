@@ -10,27 +10,24 @@ Pagina Web crapa odata ce ajungem pe pagina cu LAST_NAME, citeste la Reportul " 
 Acest lucru poate fi cauzat de schimbări în DOM sau de actualizări ale paginii care duc la invalidarea referinței elementului.
 '''
 class SignUpPage(Browser):
-    Radio_Button_Business = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[1]/label/span[1]/span/input')
-    CONTINUE_BUTTON_AFTER_I_SELECT_ON_OF_THE_RADIO_BUTTON = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[5]/button')
-    UNIVERSAL_CONTINUE_BUTTON = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[3]/button/span[1]')  #acest button de "Continue" se foloseste pe toate paginile, mai putine pe prima pagina unde selectam in ce scop ne facem contul (daca este business sau personal)
-    NAME_OF_YOUR_BUSINESS_FIELD = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[2]/div/div/input')
+    RADIO_BUTTON_PERSONAL = (By.XPATH, '//input[@value="personal"]')
+    CONTINUE_BUTTON_AFTER_I_SELECT_ON_OF_THE_RADIO_BUTTON = (By.XPATH, '//button[@data-test-id="select-account-continue-btn"]')
+    UNIVERSAL_CONTINUE_BUTTON = (By.XPATH, '//button[@data-test-id="first-name-continue-btn"]')  #acest button de "Continue" se foloseste pe toate paginile, mai putine pe prima pagina unde selectam in ce scop ne facem contul (daca este business sau personal)
     FIRST_NAME_FIELD = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[2]/div/div/input')
-    LAST_NAME_FIELD = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[2]/div/div/input')
-    EMAIL_FIELD = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[2]/div/div/input')
-    ERROR_WHO_APPEAR_IF_WE_LEAVE_EMAIL_FIELD_EMPTY = (By.XPATH, '//*[@id="root"]/div/div[4]/div[2]/div/div[2]/div/p')
+    LAST_NAME_FIELD = (By.TAG_NAME, 'input')
+    EMAIL_FIELD = (By.TAG_NAME, 'input')
+    ERROR_WHO_APPEAR_IF_WE_LEAVE_EMAIL_FIELD_EMPTY = (By.LINK_TEXT, "'value can't be empty!'")
 
 
     def navigate_to_sign_up_page(self):
         self.driver.get('https://jules.app/sign-up')
 
-    def click_on_radio_business_button(self):
-        self.driver.find_element(*self.Radio_Button_Business).click()
+    def click_on_radio_personal_button(self):
+        self.driver.find_element(*self.RADIO_BUTTON_PERSONAL).click()
 
-    def click_on_continue_button_after_i_select_the_radio_business_button(self):
+    def click_on_continue_button_after_i_select_the_radio_personal_button(self):
         self.driver.find_element(*self.CONTINUE_BUTTON_AFTER_I_SELECT_ON_OF_THE_RADIO_BUTTON).click()
 
-    def fill_in_the_field_name_of_business(self, name_of_business):
-        self.driver.find_element(*self.NAME_OF_YOUR_BUSINESS_FIELD).send_keys(name_of_business)
 
     def click_on_universal_continue_button(self):
         self.driver.find_element(*self.UNIVERSAL_CONTINUE_BUTTON).click()
